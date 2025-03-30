@@ -18,32 +18,35 @@ public class BaseTest {
     protected WebDriver driver;
     protected ExtentReports extent;
     protected ExtentTest test;
+
     @BeforeSuite
-    public void setupReport(){
+    public void setupReport() {
         extent = ExtentReportManager.getReportInstance();
+
     }
+
     @AfterSuite
-    public void teardownReport(){
+    public void teardownReport() {
         extent.flush();
     }
 
     @BeforeMethod
     public void setup() {
         Log.info("Starting web driver");
-        driver =new ChromeDriver();
+        driver = new ChromeDriver();
         driver.get("https://magento.softwaretestingboard.com/");
         driver.manage().window().maximize();
     }
 
     @AfterMethod
-    public void TearDown(ITestResult result){
-        if (result.getStatus()==ITestResult.FAILURE){
-            String screenshotpath=ExtentReportManager.captureScreenshot(driver,"Login Failure");
+    public void TearDown(ITestResult result) {
+        if (result.getStatus() == ITestResult.FAILURE) {
+            String screenshotpath = ExtentReportManager.captureScreenshot(driver, "Login Failure");
             test.fail("Check screenshot", MediaEntityBuilder.createScreenCaptureFromPath(screenshotpath).build());
         }
 
-        if (driver!=null){
-           driver.quit();
+        if (driver != null) {
+            driver.quit();
         }
 
     }

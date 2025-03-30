@@ -20,10 +20,10 @@ public class ExtentReportManager {
 
     public static ExtentReports getReportInstance() {
 
-        if(extent==null) {
+        if (extent == null) {
 
             String timestamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(new Date());
-            String reportPath = "reports/ExtentReport_"+timestamp+".html";
+            String reportPath = "reports/ExtentReport_" + timestamp + ".html";
             ExtentSparkReporter reporter = new ExtentSparkReporter(reportPath);
 
             reporter.config().setDocumentTitle("Automation Test Report");
@@ -45,13 +45,12 @@ public class ExtentReportManager {
     public static String captureScreenshot(WebDriver driver, String screenshotName) {
         try {
             File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            String path= System.getProperty("user.dir")+ "/screenshots/"+screenshotName+".png";
-            System.out.println("Path for screenshot is : "+path);
+            String path = System.getProperty("user.dir") + "/screenshots/" + screenshotName + ".png";
+            System.out.println("Path for screenshot is : " + path);
             FileUtils.copyFile(src, new File(path));
             return path;
 
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }

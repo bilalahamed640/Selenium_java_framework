@@ -11,7 +11,7 @@ import javax.xml.xpath.XPathExpression;
 
 public class LoginPage {
     private WebDriver driver;
-    @FindBy(partialLinkText="Sign")
+    @FindBy(partialLinkText = "Sign")
     WebElement signinbutton;
     @FindBy(xpath = "//input[@id='email']")
     WebElement emailxpath;
@@ -30,29 +30,32 @@ public class LoginPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void clicksignin(){
+    public void clicksignin() {
         signinbutton.click();
         //driver.findElement(signinbutton).click();
     }
-    public void enterusername(String username){
+
+    public void enterusername(String username) {
         emailxpath.click();
         emailxpath.clear();
         emailxpath.sendKeys(username);
         //driver.findElement(emailxpath).click();
-       // driver.findElement(emailxpath).clear();
-       // driver.findElement(emailxpath).sendKeys(username);
+        // driver.findElement(emailxpath).clear();
+        // driver.findElement(emailxpath).sendKeys(username);
     }
-    public void enterpassword(String password){
+
+    public void enterpassword(String password) {
         passwordxpath.click();
         passwordxpath.clear();
         passwordxpath.sendKeys(password);
-       //driver.findElement(passwordxpath).click();
-       //driver.findElement(passwordxpath).clear();
+        //driver.findElement(passwordxpath).click();
+        //driver.findElement(passwordxpath).clear();
         // driver.findElement(passwordxpath).sendKeys(password);
     }
-    public void clicklogin(){
+
+    public void clicklogin() {
         submitbutton.click();
-       // driver.findElement(submitbutton).click();
+        // driver.findElement(submitbutton).click();
     }
 
 }
