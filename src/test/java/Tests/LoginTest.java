@@ -8,7 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest {
-    @Test
+    @Test(priority = 0)
     public void Testvalidlogin() throws InterruptedException {
         test = ExtentReportManager.createTest("Login Test");
         LoginPage login =new LoginPage(driver);
@@ -23,10 +23,11 @@ public class LoginTest extends BaseTest {
         System.out.println("Title of the page is:"+driver.getTitle());
         Assert.assertEquals(driver.getTitle(),"Home Page");
         test.pass("Login passed");
+
     }
-    @Test
+    @Test(priority = 1)
     public void Invalidlogin() throws InterruptedException {
-        test = ExtentReportManager.createTest("Login Test");
+        test = ExtentReportManager.createTest("Invalid Login");
         LoginPage login =new LoginPage(driver);
         login.clicksignin();
         Log.info("clicked sign in");
@@ -37,7 +38,7 @@ public class LoginTest extends BaseTest {
         login.clicklogin();
         test.info("login clicked");
         System.out.println("Title of the page is:"+driver.getTitle());
-        Assert.assertEquals(driver.getTitle(),"Home Page");
+        Assert.assertEquals(driver.getTitle(),"Customer Login");
         test.pass("Login passed");
     }
 
